@@ -12,23 +12,8 @@ class Game {
         this.renderer.shadowMap.enabled = true;
         document.body.appendChild(this.renderer.domElement);
 
-        // Lighting
         this.setupLighting();
-
-        // Initialize labyrinth
-        this.labyrinth = new Labyrinth(20, 20); // 20x20 map size
-        this.labyrinth.generate();
-        this.labyrinth.build(this.scene);
-
-        // Initialize player
-        this.player = new Player(this.camera);
-        this.controls = new PointerLockControls(this.camera, document.body);
-
-        // Event listeners
-        this.setupEventListeners();
-
-        // Start game loop
-        this.animate();
+        this.initializeGame();
     }
 
     setupLighting() {
@@ -39,6 +24,18 @@ class Game {
         directionalLight.position.set(5, 5, 5);
         directionalLight.castShadow = true;
         this.scene.add(directionalLight);
+    }
+
+    async initializeGame() {
+        this.labyrinth = new Labyrinth(20, 20);
+        this.labyrinth.generate();
+        await this.labyrinth.build(this.scene);
+
+        this.player = new Player(this.camera);
+        this.controls = new PointerLockControls(this.camera, document.body);
+
+        this.setupEventListeners();
+        this.animate();
     }
 
     setupEventListeners() {
@@ -68,5 +65,4 @@ class Game {
     }
 }
 
-// Start the game
 new Game();
