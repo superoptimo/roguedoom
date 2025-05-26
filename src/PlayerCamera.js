@@ -27,7 +27,7 @@ export class PlayerCamera extends PhysicEntity {
 
             if (startCell) {
                 const cellPosData = this.labyrinth.getCellPosition(startCell.m_row, startCell.m_column, startCell.m_upstairs);
-                this.position.set(cellPosData.x_center, cellPosData.y_base_floor_top + this.playerHeight, cellPosDatar.z_center);
+                this.position.set(cellPosData.x_center, cellPosData.y_base_floor_top + this.playerHeight, cellPosData.z_center);
                 this.m_cell = startCell;
             } else {
                 // Fallback if cell not found
