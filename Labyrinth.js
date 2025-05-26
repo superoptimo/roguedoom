@@ -20,6 +20,16 @@ export class Labyrinth {
         this.elevatorPlatforms = []; 
         this.activeElevatorDetails = null; 
         this.activeRockets = []; // Array to hold active rockets
+
+        // Properties for visibility culling
+        this.m_vecdir = new THREE.Vector3();
+        this.m_vecside = new THREE.Vector3();
+        this.m_vecpos = new THREE.Vector3();
+        this.m_fov_rad_half = 0; // Will store half of FoV in radians
+
+        this.cellstack = [];
+        this.markedstack = []; // Cells that had mark2 = true in current frame, for reset
+        this.allLabyrinthMeshes = []; // To store all static meshes for quick visibility reset
         
         this.generateLabyrinth(); 
         this.create3DRepresentation(); 
