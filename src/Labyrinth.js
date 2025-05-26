@@ -112,7 +112,7 @@ export class Labyrinth {
     }
 
     createTexturedMaterials() {
-        const basePath = 'assets/images/';
+        const basePath = 'images/';
         this.texRedFloor = this.textureLoader.load(basePath + 'REDFLOOR.GIF');
         this.texRedCeil = this.textureLoader.load(basePath + 'REDCEIL.GIF');
         this.texRedWall = this.textureLoader.load(basePath + 'REDWALL.GIF');
